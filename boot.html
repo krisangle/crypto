@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loader</title>
+    <style>
+#dropTarget {
+    border: 20px dashed orange;
+    height: 60px;
+    width: 400px;
+    border-image: url(safety.svg) 20 round;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    margin: auto;
+    inset: 0px;
+}
+body {
+    margin:0;
+}
+iframe {
+    display: none;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+    //background: lightyellow;
+    border: 5px dashed lightgrey;
+    border-image: url(safety.svg) 20 round;
+}
+    </style>
+</head>
+<body>
+    <div id="dropTarget">drop your secret key here</div>
+<!--    <hr/>
+    <h1>Bootloader...</h1>-->
+    <iframe id="ciphered" src="" title="ciphered content"></iframe>
+</body>
+<script type="module">
+    const dropEl = document.getElementById('dropTarget')
+    const cipheredEl = document.getElementById('ciphered')
+    let fileName = ''
+
+    dropEl.addEventListener('dragenter', (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+    })
+    dropEl.addEventListener('dragover', (e) => {
+        e.stopPropagation()
+        e.preventDefault()
+        e.dataTransfer.dropEffect = 'copy'
+    }, false)
+    dropEl.addEventListener('drop', function(e) {
+        e.stopPropagation()
+        e.preventDefault()
+        let reader = new FileReader()
+        reader.onload = function() {
+            try {
+                let data = JSON.parse(this.result)
+                console.log(data)
+                window.sessionStorage.setItem('secret', this.result)
+                //console.log(window.sessionStorage.getItem('secret'))
+                dropEl.style.display = 'none'
+                navigator.serviceWorker.controller.postMessage({type: 'SETKEY', key: data.key, iv: data.iv})
+                setTimeout( loadHtml, 100)
+                //loadHtml()
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        //console.log(`dropEvt triggered: ${e.dataTransfer.files[0]}`)
+        fileName = e.dataTransfer.files[0].name
+        console.log(`file dropped: ${fileName}`)
+        reader.readAsText(e.dataTransfer.files[0])
+    }, false)
+
+    document.addEventListener("visibilitychange", () => {
+       if (document.hidden) {
+          window.sessionStorage.removeItem('secret')
+          dropEl.style.display = 'block'
+          cipheredEl.style.display = 'none'
+          //clearText.value = 'Access protected'
+       }
+    })
+
+    async function loadHtml() {
+        //let r = await fetch('index.html')
+        //let source = await r.text()
+        //document.documentElement.innerHTML = source
+        //document.write(source)
+        //window.location.href = '/sec/index.html'
+        cipheredEl.src = '/sec/index.html'
+        cipheredEl.style.display = "block"
+    }
+    //setTimeout(loadHtml, 2000)
+
+    const registerServiceWorker = async () => {
+        if ("serviceWorker" in navigator) {
+            try {
+                const registration = await navigator.serviceWorker.register("/sw.js", {
+                    scope: "/",
+                });
+                if (registration.installing) {
+                    console.log("Service worker installing");
+                } else if (registration.waiting) {
+                    console.log("Service worker installed");
+                } else if (registration.active) {
+                    console.log("Service worker active");
+                    //console.log(navigator.serviceWorker)
+                }
+            } catch (error) {
+                console.error(`Registration failed with ${error}`);
+            }
+        }
+    }
+
+    // …
+    registerServiceWorker()
+    console.log(navigator.serviceWorker.controller)
+</script>
+</html>
