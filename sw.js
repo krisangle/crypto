@@ -69,14 +69,15 @@ self.addEventListener("fetch", (event) => {
         let iv = new Uint8Array(listiv)
         //clearTimeout(keytimer)
         //keytimer = setTimeout(delKey, 10000)
-        let digest = await sc.digest('SHA-1', te.encode(url.pathname.substring(4)))
+        let secpos = url.pathname.search(/\/sec\//)
+        let digest = await sc.digest('SHA-1', te.encode(url.pathname.substring(secpos+4)))
         //let digest = await sc.digest('SHA-1', te.encode('/index.html'))
-        let newpath = '/sec/'+Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('')
-        console.log(`${url.pathname.substring(4)} => ${newpath}`)
+        let newpath = 'sec/'+Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('')
+        console.log(`${url.pathname.substring(secpos+4)} => ${newpath}`)
         response = await fetch(newpath, event.request.headers)
         //console.log(response.status)
         if (response.status == 404) {
-            return fetch(url.pathname.substring(4), event.request.headers)
+            return fetch(url.pathname.substring(secpos+4), event.request.headers)
         }
         let encSource = await response.arrayBuffer()
         try {
