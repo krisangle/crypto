@@ -46,7 +46,7 @@ self.addEventListener("install", (event) => {
 self.addEventListener("fetch", (event) => {
     let url = new URL(event.request.url)
     console.log(`Intercepted ${event.request.url} (${url.pathname})`)
-    //console.log(!/^\/sec\//.test(url.pathname))
+    //console.log(!/\/sec\//.test(url.pathname))
     
     let response = null
     let respText = null
@@ -55,7 +55,7 @@ self.addEventListener("fetch", (event) => {
         event.respondWith(fetch(event.request))
         return
     }*/
-    if (!/^\/sec\//.test(url.pathname)) {
+    if (!/\/sec\//.test(url.pathname)) {
         console.log("unciphered content access")
         event.respondWith(fetch(event.request))
         return
