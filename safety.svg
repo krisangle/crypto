@@ -1,0 +1,20 @@
+<svg style="background-color: black;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60">
+<!--  <symbol id="safety">
+    <path d="M 10 0 l 10 0 l -20 20 l 0 -10 Z" fill="#FFAA00"/>
+    <path d="M 20 10 l 0 10 l -10 0 Z" fill="#FFAA00"/>
+  </symbol>
+  <use href="#safety" x="0" y="0"/>
+  <use href="#safety" x="20" y="0"/>
+  <use href="#safety" x="40" y="0"/>
+  <use href="#safety" x="0" y="20"/>
+  <use href="#safety" x="20" y="20"/>
+  <use href="#safety" x="40" y="20"/>
+  <use href="#safety" x="0" y="40"/>
+  <use href="#safety" x="20" y="40"/>
+  <use href="#safety" x="40" y="40"/>-->
+  <pattern id="safety" patternUnits="userSpaceOnUse" width="20" height="20">
+    <path d="M 10 0 l 10 0 l -20 20 l 0 -10 Z" fill="#FFAA00"/>
+    <path d="M 20 10 l 0 10 l -10 0 Z" fill="#FFAA00"/>
+  </pattern>
+  <rect x="0" y="0" width="60" height="60" fill="url(#safety)"/>
+</svg>
