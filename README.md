@@ -1,6 +1,8 @@
 # crypto
+
 Hosting ciphered web content with client-side on-the-fly in-browser deciphering.
 --------------------------
+
 ## how it works
 It uses the browser modern crypto.subtle interface to achieve client-side deciphering.
 
