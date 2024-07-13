@@ -1,8 +1,6 @@
-# crypto #
-
+# crypto
 
 A trick for hosting ciphered web content with client-side on-the-fly in-browser deciphering.
---------------------------
 
 ## how it works
 
@@ -18,4 +16,5 @@ The service worker intercepts the fetch request and performs a simple URL path a
 - the ciphered resources can be of any type: HTML, MarkDown, Javascript, images (SVG, JPG, PNG...), text, CSV,... (for this to work the service worker also changes the response header according to the initial resource request file extension, to expose the correct mime type since the ciphered resource will always come as an 'application/octet-stream' content-type in the HTTP response headers)
 
 ## Contact
+
 If you're interested to know more about the service worker deciphering technique, please contact me on c<DOT>angleraud<DOT>gmail<DOT>com
