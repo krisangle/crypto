@@ -17,4 +17,4 @@ The service worker intercepts the fetch request and performs a simple URL path a
 
 ## Contact
 
-If you're interested to know more about the service worker deciphering technique, please contact me on c<DOT>angleraud<DOT>gmail<DOT>com
+If you're interested to know more about the service worker deciphering technique, please contact me on c DOT angleraud DOT gmail DOT com
