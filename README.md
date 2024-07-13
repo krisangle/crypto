@@ -1,9 +1,11 @@
 # crypto
 
-Hosting ciphered web content with client-side on-the-fly in-browser deciphering.
+
+A trick for hosting ciphered web content with client-side on-the-fly in-browser deciphering.
 --------------------------
 
 ## how it works
+
 It uses the browser modern crypto.subtle interface to achieve client-side deciphering.
 
 Ciphered contents are prepared offline using a nodejs-based ciphering tool. This demo site uses AES-GCM-256 as a symmetric cipher suite. A static html+js+images... directory is crawled and every file found there (recursively) is ciphered and its path is encoded as a SHA-1 string. This is then pushed online on any public web hosting service (such as here GitHub-pages). The ciphered content is placed in a single flat directory named 'sec' at the same level as the landing page.
