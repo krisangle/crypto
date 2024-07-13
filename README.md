@@ -1,4 +1,4 @@
-# crypto
+# crypto #
 
 
 A trick for hosting ciphered web content with client-side on-the-fly in-browser deciphering.
