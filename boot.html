@@ -28,7 +28,7 @@ iframe {
     width: 100vw;
     //background: lightyellow;
     border: 5px dashed lightgrey;
-    border-image: url(safety.svg) 20 round;
+    border-image: url(safety.svg) 20 repeat;
 }
     </style>
 </head>
@@ -79,7 +79,7 @@ iframe {
     document.addEventListener("visibilitychange", () => {
        if (document.hidden) {
           window.sessionStorage.removeItem('secret')
-          dropEl.style.display = 'block'
+          dropEl.style.display = 'flex'
           cipheredEl.style.display = 'none'
           //clearText.value = 'Access protected'
        }
@@ -90,7 +90,7 @@ iframe {
         //let source = await r.text()
         //document.documentElement.innerHTML = source
         //document.write(source)
-        //window.location.href = 'sec/index.html'
+        //window.location.href = '/sec/index.html'
         cipheredEl.src = 'sec/index.html'
         cipheredEl.style.display = "block"
     }
@@ -99,7 +99,7 @@ iframe {
     const registerServiceWorker = async () => {
         if ("serviceWorker" in navigator) {
             try {
-                const registration = await navigator.serviceWorker.register("sw.js");
+                const registration = await navigator.serviceWorker.register("osw.js");
                 if (registration.installing) {
                     console.log("Service worker installing");
                 } else if (registration.waiting) {
