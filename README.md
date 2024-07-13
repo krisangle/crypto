@@ -1,6 +1,6 @@
 # crypto
 
-A trick for hosting ciphered web content with client-side on-the-fly in-browser deciphering.
+A trick for hosting ciphered web content with client-side on-the-fly in-browser deciphering. Any public web service can be used to host the ciphered content, the owner of the server will have zero access to the ciphered content.
 
 ## how it works
 
