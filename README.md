@@ -3,7 +3,7 @@
 A trick for hosting ciphered web content with client-side on-the-fly in-browser deciphering. Any public web service can be used to host the ciphered content, the owner of the server will have zero access to the ciphered content. For now, this content has to be static resources, however, for dynamic content applications, it would also be possible to perform selective on-the-fly ciphering and deciphering of data exchanged between the client and the server front-end. But this would require dedicated development, with access to the application's design.
 
 ## test page
-[https://github.com/krisangle/crypto](https://github.com/krisangle/crypto)
+[https://krisangle.github.io/crypto/]
 
 ## how it works
 
