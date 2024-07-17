@@ -20,4 +20,4 @@ The service worker intercepts the fetch request and performs a simple URL path a
 
 ## contact
 
-If you're interested in knowing more about the service worker deciphering technique, please get in touch with me at krisangle@users.noreply.github.com.
+If you're interested in knowing more about the service worker deciphering technique, please get in touch with me at c <DOT> angleraud <AT> gmail <DOT> com.
